@@ -3,7 +3,7 @@
 
 Edit `config.sample.json` and save it as `config.json` which contain the credentials for your shoutcast server and mongodb configuration.
 
-`{
+```{
     "shoutcast" : {
         "url": "http://yourserver.org:8000", <-- your shoutcast url
         "pass" : "yourpassword_admin",       <-- your sc admin pasword
@@ -18,7 +18,7 @@ Edit `config.sample.json` and save it as `config.json` which contain the credent
         "collection" : "listeners"           <--- you can name this collection anything you want
     }
 
-}`
+}```
 
 `npm run install`
 `npm run start` 
