@@ -38,5 +38,24 @@ Listeners: 1
 10/27/2019, 10:38:12 AM | 108.49.69.200 | Wellesley Hills, Massachusetts US | 03:31:39 | DNAS | 42.3104,-71.2741
 ```
 
+# Output Explanation
+Datetime | IP Address | City, State Country | Connect time | Referer | Geo location (Maps lookup)
+
 # MongoDb captures the fields, and updates on the IP address as key.
 The next version coming will include a web based dashboard, with exporting to a csv file.
+
+# Mongo fields
+```
+{
+    "timestamp" : data.timestamp,
+    "referer"   : data.referer,
+    "useragent" : data.useragent,
+    "hostname"  : data.hostname,
+    "lat"       : data.geo.location.latitude,
+    "lng"       : data.geo.location.longitude,
+    "country"   : data.geo.country,
+    "city"      : data.geo.city,
+    "state"     : data.geo.state,
+    "connecttime" : data.connecttime
+}
+```
