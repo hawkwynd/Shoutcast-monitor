@@ -1,7 +1,8 @@
-# SC-Analytics
-## Setup
+# SC-Analytics 
+A Node application which monitors visitor activity, logging connections to MongoDB.
 
-Edit `config.sample.json` and save it as `config.json` which contain the credentials for your shoutcast server and mongodb configuration.
+## Installation
+Edit `config.sample.json` and save it as `config.json`
 
 ```{
     "shoutcast" : {
@@ -20,6 +21,18 @@ Edit `config.sample.json` and save it as `config.json` which contain the credent
 
 }```
 
+### Install dependencies
 `npm run install`
+
+# Run it
 `npm run start` 
 
+```
+Server Uptime: 20:03:28
+Currently playing: Steely Dan - Deacon Blues
+Average Listening Time: 03:31:39
+Listeners: 1
+--------------
+
+10/27/2019, 10:38:12 AM | 108.49.69.200 | Wellesley Hills, Massachusetts US | 03:31:39 | DNAS | 42.3104,-71.2741
+```
