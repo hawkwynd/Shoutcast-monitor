@@ -1,0 +1,17 @@
+{
+    "shoutcast" : {
+        "url": "http://yourserver.org:8000",
+        "pass" : "yourpassword_admin",
+        "mode" : "viewjson",
+        "sid" : 1,
+        "path" : "admin.cgi"
+    },
+    "mongodb" : {
+        "host" : "localhost",
+        "port" : "27017",
+        "db" :  "yourdatabase",
+        "collection" : "listeners"
+    }
+    
+
+}
