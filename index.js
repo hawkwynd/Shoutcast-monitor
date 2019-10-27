@@ -1,3 +1,6 @@
+// @author Scott Fleming
+// @email hawkwynd@gmail.com 
+
 const getJSON = require('get-json');
 const prettyMilliseconds = require('pretty-ms');
 const geoip = require('geo-from-ip');
