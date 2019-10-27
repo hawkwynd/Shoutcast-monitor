@@ -1,14 +1,14 @@
 # SC-Analytics 
 A Node application which monitors visitor activity, logging connections to MongoDB.
+You'll need a shoutcast server running with access to the admin.cgi pages. I run sc_serv on an AWS micro instance running Ubuntu. 
 
 ## Installation
 Edit `config.sample.json` and save it as `config.json`
 
-
 ```
 {
     "shoutcast" : {
-        "url": "http://yourserver.org:8000", <-- your shoutcast url
+        "url": "http://yourserver.org:8000", <-- your shoutcast url or ip address and port SC is running on
         "pass" : "yourpassword_admin",       <-- your sc admin pasword
         "mode" : "viewjson", 
         "sid" : 1,
@@ -30,7 +30,7 @@ Edit `config.sample.json` and save it as `config.json`
 ### Run it
 `npm run start` 
 
-
+# Console log report
 ```
 Server Uptime: 20:03:28
 Currently playing: Steely Dan - Deacon Blues
@@ -38,3 +38,6 @@ Average Listening Time: 03:31:39
 Listeners: 1
 10/27/2019, 10:38:12 AM | 108.49.69.200 | Wellesley Hills, Massachusetts US | 03:31:39 | DNAS | 42.3104,-71.2741
 ```
+
+# MongoDb captures the fields, and updates on the IP address as key.
+The next version coming will include a web based dashboard, with exporting to a csv file.
