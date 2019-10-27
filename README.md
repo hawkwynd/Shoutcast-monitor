@@ -20,7 +20,6 @@ Edit `config.sample.json` and save it as `config.json`
         "db" :  "yourdatabase",              <-- your database name
         "collection" : "listeners"           <--- you can name this collection anything you want
     }
-
 }
 ```
 
