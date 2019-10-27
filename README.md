@@ -27,7 +27,9 @@ Edit `config.sample.json` and save it as `config.json`
 # Run it
 `npm run start` 
 
-```Server Uptime: 20:03:28
+
+```
+Server Uptime: 20:03:28
 Currently playing: Steely Dan - Deacon Blues
 Average Listening Time: 03:31:39
 Listeners: 1
