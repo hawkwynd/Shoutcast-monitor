@@ -1,5 +1,5 @@
 {
-  "name": "ShoutCast",
+  "name": "ShoutCast-Monitor",
   "version": "1.0.0",
   "description": "ShoutCast Server Monitor",
   "main": "index.js",
