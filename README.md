@@ -24,10 +24,10 @@ Edit `config.sample.json` and save it as `config.json`
 }
 ```
 
-### Install dependencies
+### Install the packages and dependencies
 `npm run install`
 
-# Run it
+### Run it
 `npm run start` 
 
 
