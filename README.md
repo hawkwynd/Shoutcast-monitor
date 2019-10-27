@@ -4,7 +4,9 @@ A Node application which monitors visitor activity, logging connections to Mongo
 ## Installation
 Edit `config.sample.json` and save it as `config.json`
 
-```{
+
+```
+{
     "shoutcast" : {
         "url": "http://yourserver.org:8000", <-- your shoutcast url
         "pass" : "yourpassword_admin",       <-- your sc admin pasword
@@ -19,7 +21,8 @@ Edit `config.sample.json` and save it as `config.json`
         "collection" : "listeners"           <--- you can name this collection anything you want
     }
 
-}```
+}
+```
 
 ### Install dependencies
 `npm run install`
