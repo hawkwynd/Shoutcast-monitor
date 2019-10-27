@@ -2,14 +2,10 @@ const getJSON = require('get-json');
 const prettyMilliseconds = require('pretty-ms');
 const geoip = require('geo-from-ip');
 const mongo = require('mongodb');
-const url = "mongodb://localhost:27017/hawkwynd";
-var config = require('./config.json');
-var sc = config.shoutcast; 
+const config = require('./config.json');
+const sc = config.shoutcast; 
 var mc = config.mongodb;
-
-console.log(config);
-
-// process.exit();
+const MongoUrl = `mongodb://${mc.host}:${mc.port}/${mc.db}`;
 
 
 function runner(){
@@ -76,7 +72,7 @@ function secondsToHms(d) {
 }
 
 function mongoUpdate(data){
-  mongo.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err, db) => {
+  mongo.connect(MongoUrl, {useNewUrlParser: true, useUnifiedTopology: true}, (err, db) => {
     if(err) {
        console.log(err);
        process.exit(0);
