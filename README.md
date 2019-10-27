@@ -1,4 +1,4 @@
-# SC-Analytics 
+# SC-Analytics - Shoutcast-Server-Monitor
 A Node application which monitors visitor activity, logging connections to MongoDB.
 You'll need a shoutcast server running with access to the admin.cgi pages. I run sc_serv on an AWS micro instance running Ubuntu. 
 
