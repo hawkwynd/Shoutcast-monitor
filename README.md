@@ -18,7 +18,7 @@ Edit `config.sample.json` and save it as `config.json`
         "host" : "localhost",                <-- host of your mongo server
         "port" : "27017",                    <-- port
         "db" :  "yourdatabase",              <-- your database name
-        "collection" : "listeners"           <--- you can name this collection anything you want
+        "collection" : "listeners"           <-- name this collection anything you want
     }
 }
 ```
