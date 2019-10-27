@@ -8,7 +8,7 @@ Edit `config.sample.json` and save it as `config.json`
 ```
 {
     "shoutcast" : {
-        "url": "http://yourserver.org:8000", <-- your shoutcast url or ip address and port SC is running on
+        "url": "http://yourserver.org:8000", <-- your shoutcast ip address and port
         "pass" : "yourpassword_admin",       <-- your sc admin pasword
         "mode" : "viewjson", 
         "sid" : 1,
