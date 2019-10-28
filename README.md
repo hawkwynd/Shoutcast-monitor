@@ -1,6 +1,7 @@
-# SC-Analytics - Shoutcast-Server-Monitor
+# SC-Analytics - Shoutcast Server Monitor
 A Node application which monitors visitor activity, logging connections to MongoDB.
-You'll need a shoutcast server running with access to the admin.cgi pages. I run sc_serv on an AWS micro instance running Ubuntu. 
+You'll need a shoutcast server running with access to the admin.cgi pages. I run sc_serv on an AWS micro instance running Ubuntu.
+This project came out of the necessity to have some form of logging/reporting for monitoring listeners of my shoutcast radio station, Hawkwynd Radio. 
 
 ## Overview/Psuedocode
 - Call to shoucast server admin returns json payload of the following:
@@ -18,22 +19,22 @@ Edit `config.sample.json` and save it as `config.json`
 ```json
 {
     "shoutcast" : {
-        "url"  : "http://yourserver.org:8000", // your shoutcast ip address and port
-        "pass" : "yourpassword_admin",         // your sc admin pasword
-        "mode" : "viewjson",                   // default viewxml
-        "sid"  : 1,                            // the stream ID 
-        "path" : "admin.cgi"                   // access the admin functions
+        "url"  : "http://yourserver.org:8000", 
+        "pass" : "yourpassword_admin",         
+        "mode" : "viewjson",                   
+        "sid"  : 1,                            
+        "path" : "admin.cgi"                   
     },
     "mongodb" : {
-        "host"       : "localhost",            // host (ip or domain)
-        "port"       : "27017",                // port
-        "db"         :  "yourdatabase",        // database name
-        "collection" : "listeners"             // Name this anything your little heart desires
+        "host"       : "localhost",            
+        "port"       : "27017",                
+        "db"         :  "yourdatabase",        
+        "collection" : "listeners"             
     }
 }
 ```
 
-### Install the packages and dependencies
+## Install the packages and dependencies
 `npm run install`
 
 ### Run it
@@ -51,38 +52,21 @@ Listeners: 1
 # Output Explanation    
 Datetime | IP Address | City, State Country | Connect time | Referer | Geo location (Maps lookup)
 
-# Mongo fields
-```json
-{
-    "timestamp" : data.timestamp,
-    "referer"   : data.referer,
-    "useragent" : data.useragent,
-    "hostname"  : data.hostname,
-    "lat"       : data.geo.location.latitude,
-    "lng"       : data.geo.location.longitude,
-    "country"   : data.geo.country,
-    "city"      : data.geo.city,
-    "state"     : data.geo.state,
-    "connecttime" : data.connecttime
-}
-```
-
-# Dependencies
+## Project Dependencies
 ```json
 "dependencies": {
-    "cli": "^1.0.1",
-    "geo-from-ip": "^1.2.2",
-    "get-json": "^1.0.1",
-    "lodash": "^4.17.15",
+    "cli"         : "^1.0.1",
+    "geo-from-ip" : "^1.2.2",
+    "get-json"    : "^1.0.1",
+    "lodash"      : "^4.17.15",
     "lodash.merge": "^4.6.2",
-    "minimatch": "^3.0.4",
-    "moment": "^2.24.0",
-    "mongodb": "^3.3.3",
-    "nodemon": "^1.19.4",
-    "pretty-ms": "^5.0.0"
+    "minimatch"   : "^3.0.4",
+    "moment"      : "^2.24.0",
+    "mongodb"     : "^3.3.3",
+    "nodemon"     : "^1.19.4",
+    "pretty-ms"   : "^5.0.0"
   }
   ```
-
 
 Inspiration for this project from [codeforgeek.com](https://codeforgeek.com/node-mongodb-tutorial/).
 
