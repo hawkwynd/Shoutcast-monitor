@@ -59,4 +59,4 @@ The next version coming will include a web based dashboard, with exporting to a 
     "connecttime" : data.connecttime
 }
 ```
-Inspiration for this project from [codeforgeek.com] (https://codeforgeek.com/node-mongodb-tutorial/).
+Inspiration for this project from [codeforgeek.com](https://codeforgeek.com/node-mongodb-tutorial/).
