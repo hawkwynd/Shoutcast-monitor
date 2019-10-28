@@ -1,7 +1,7 @@
-# SC-Analytics - Shoutcast Server Monitor
-A Node application which monitors visitor activity, logging connections to MongoDB.
+# Shoutcast Server Monitor 
+A Node.js application which monitors visitor activity, logging connections to MongoDB.
 You'll need a shoutcast server running with access to the admin.cgi pages. I run sc_serv on an AWS micro instance running Ubuntu.
-This project came out of the necessity to have some form of logging/reporting for monitoring listeners of my shoutcast radio station, Hawkwynd Radio. 
+This project came out of the necessity to have some form of logging/reporting for monitoring listeners of my shoutcast radio station, Hawkwynd Radio. My first node application.
 
 ## Overview/Psuedocode
 - Call to shoucast server admin returns json payload of the following:
