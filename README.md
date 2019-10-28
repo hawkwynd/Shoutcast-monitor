@@ -18,17 +18,17 @@ Edit `config.sample.json` and save it as `config.json`
 ```json
 {
     "shoutcast" : {
-        "url": "http://yourserver.org:8000", <-- your shoutcast ip address and port
-        "pass" : "yourpassword_admin",       <-- your sc admin pasword
-        "mode" : "viewjson", 
-        "sid" : 1,
-        "path" : "admin.cgi"
+        "url"  : "http://yourserver.org:8000", // your shoutcast ip address and port
+        "pass" : "yourpassword_admin",         // your sc admin pasword
+        "mode" : "viewjson",                   // default viewxml
+        "sid"  : 1,                            // the stream ID 
+        "path" : "admin.cgi"                   // access the admin functions
     },
     "mongodb" : {
-        "host" : "localhost",                <-- host of your mongo server
-        "port" : "27017",                    <-- port
-        "db" :  "yourdatabase",              <-- your database name
-        "collection" : "listeners"           <-- name this collection anything you want
+        "host"       : "localhost",            // host (ip or domain)
+        "port"       : "27017",                // port
+        "db"         :  "yourdatabase",        // database name
+        "collection" : "listeners"             // Name this anything your little heart desires
     }
 }
 ```
