@@ -15,7 +15,7 @@ You'll need a shoutcast server running with access to the admin.cgi pages. I run
 ## Installation
 Edit `config.sample.json` and save it as `config.json`
 
-```
+```json
 {
     "shoutcast" : {
         "url": "http://yourserver.org:8000", <-- your shoutcast ip address and port
@@ -52,7 +52,7 @@ Listeners: 1
 Datetime | IP Address | City, State Country | Connect time | Referer | Geo location (Maps lookup)
 
 # Mongo fields
-```
+```json
 {
     "timestamp" : data.timestamp,
     "referer"   : data.referer,
@@ -68,7 +68,7 @@ Datetime | IP Address | City, State Country | Connect time | Referer | Geo locat
 ```
 
 # Dependencies
-```
+```json
 "dependencies": {
     "cli": "^1.0.1",
     "geo-from-ip": "^1.2.2",
