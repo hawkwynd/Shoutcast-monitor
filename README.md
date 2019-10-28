@@ -51,9 +51,6 @@ Listeners: 1
 # Output Explanation    
 Datetime | IP Address | City, State Country | Connect time | Referer | Geo location (Maps lookup)
 
-# MongoDb captures the fields, and updates on the IP address as key.
-The next version coming will include a web based dashboard, with exporting to a csv file.
-
 # Mongo fields
 ```
 {
@@ -88,3 +85,15 @@ The next version coming will include a web based dashboard, with exporting to a 
 
 
 Inspiration for this project from [codeforgeek.com](https://codeforgeek.com/node-mongodb-tutorial/).
+
+## TO-DO
+- [ ] Web console dashboard
+- [ ] Reporting / Analytics functions for queries
+- [ ] Shoutcast Administration functions (kick/ban/reserve)
+- [ ] Multiple stream monitoring
+- [ ] Pretty stuff.
+
+Scott Fleming
+[hawkwynd@gmail.com](mailto:hawkwynd@gmail.com)
+Hawkwynd Radio - Live broadcasts Friday nights 9pm CST 24/7 Classic Rock & Excellent Music
+[http://stream.hawkwynd.com](http://stream.hawkwynd.com)
