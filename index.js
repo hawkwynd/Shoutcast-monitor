@@ -12,20 +12,19 @@ const MongoUrl = `mongodb://${mc.host}:${mc.port}/${mc.db}`;
 const myCollection = mc.collection;
 const database = mc.db;
 
-const dt = new Date();
-    console.log(dt);
-
 
 function runner(){
 
-getJSON(sc.url + "/" + sc.path + "?sid=" + sc.sid + '&mode=' + sc.mode + '&pass=' + sc.pass)
+const dt = new Date();
+	
+   getJSON(sc.url + "/" + sc.path + "?sid=" + sc.sid + '&mode=' + sc.mode + '&pass=' + sc.pass)
   .then(function(resp) {
     
     let server = Object.assign({}, resp); // clone resp so we don't kill the object when deleting listener and songs
     var serverStat = getserverStats(server);
 
     console.log('\033[2J'); // clear console 
-    console.log(`Server Uptime: ${secondsToHms(resp.streamuptime)}`);
+    console.log(`Server Uptime: ${secondsToHms(resp.streamuptime)} ${dt.toLocaleString()}` );
     console.log(`Currently playing: ${resp.songtitle}`);
     
     // Got milk? Then spill it!
