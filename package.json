@@ -7,7 +7,7 @@
     "start": "nodemon index.js",
     "report" : "nodemon service.js"
   },
-  "author": "Scott Fleming",
+  "author": "Scott Fleming scott.s.fleming@gmail.com",
   "license": "ISC",
   "dependencies": {
     "cli": "^1.0.1",
