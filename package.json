@@ -4,7 +4,8 @@
   "description": "ShoutCast Server Monitor",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "report" : "nodemon service.js"
   },
   "author": "Scott Fleming",
   "license": "ISC",
