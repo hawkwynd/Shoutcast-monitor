@@ -11,7 +11,13 @@
         "port" : "27017",
         "db" :  "yourdatabase",
         "collection" : "listeners"
-    }
+    },
+    "mysql" : {
+        "host": "localhost",
+        "user": "MysqlUsername",
+        "password": "MysqlPassword",
+        "database": "MysqlDatabaseName"
+      }
     
 
 }

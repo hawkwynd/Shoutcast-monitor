@@ -2,28 +2,18 @@
 const getJSON             = require('get-json');
 const prettyMilliseconds  = require('pretty-ms');
 const geoip               = require('geo-from-ip');
-// const mongo               = require('mongodb');
 const config              = require('./config.json');
 const mysql               = require('mysql');
 const moment              = require('moment');
+var _                     = require('lodash'); // used in diff of arrays
 const sc                  = config.shoutcast; 
-// const mc                  = config.mongodb;
-// const MongoUrl            = `mongodb://${mc.host}:${mc.port}/${mc.db}`;
-// const myCollection        = mc.collection;
-// const database            = mc.db;
+const db                  = config.mysql;
 const dt                  = new Date();
 const rightNow            = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
-var _                     = require('lodash'); // used in diff of arrays
-
-// mysql connection
-const con = mysql.createConnection({
-    host: "localhost",
-    user: "shoutcast",
-    password: "hawkwynd2020",
-    database: "hawkwyndradio"
-  });
+const con                 = mysql.createConnection( db );
 
 con.connect();
+
 
 
 function runner(){
@@ -94,7 +84,7 @@ function updatePlays( plays, title, aid, rid, callback ){
 }
 
     
-    function getCurrentSong( callback ){
+function getCurrentSong( callback ){
         
         var getSongDB = "select * from nowplaying limit 1";
 
@@ -111,8 +101,8 @@ function updatePlays( plays, title, aid, rid, callback ){
         })
     }
 
-    // get artistID from artist table by name
-    function lookupArtist( artist ,callback ){
+// get artistID from artist table by name
+function lookupArtist( artist ,callback ){
         var aID = 0;
         var lookupQuery = "Select * from artist where name= ? LIMIT 1";             
         var data        = [artist]
@@ -134,8 +124,8 @@ function updatePlays( plays, title, aid, rid, callback ){
 
 
 
-    // increment plays matching artistID and title in recording table
-    function getRecording( artistID, title, callback){
+// increment plays matching artistID and title in recording table
+function getRecording( artistID, title, callback){
         
         var sqlQuery = 'SELECT * FROM recording where title=? AND artist_id=? LIMIT 1'
         var data = [ title, artistID ]
@@ -162,7 +152,7 @@ function updatePlays( plays, title, aid, rid, callback ){
 
     
     console.log('\033[2J'); // clear console    
-    console.log('* * FLOYD by Scott Fleming 2020 v1.3 Sept 7, 2020 * *')
+    console.log('* * FLOYD by Scott Fleming 2020 v1.4 * *')
     console.log(`Server Uptime: ${secondsToHms(resp.streamuptime)}` );
     console.log(`Currently playing: ${resp.songtitle}`);
     
@@ -180,15 +170,7 @@ function updatePlays( plays, title, aid, rid, callback ){
           
           hostnames.push( listener.hostname) ; // build array of hostnames
         
-        //   browseListener( listener.hostname, function(result){          
-
-        //   });
-
-
           listener.geo          = geoip.allData( listener.hostname );   
-          
-        //   console.log( listener.geo )   
-
           listener.connecttime  = secondsToHms( listener.connecttime );           
           listener.referer      = listener.referer == '' ? 'DNAS' : 'HTML'
           listener.timestamp    = new Date(Date.now()).toISOString();
@@ -205,7 +187,6 @@ function updatePlays( plays, title, aid, rid, callback ){
         
         
         // compare and update hostnames with DB of status=1
-        // console.log( hostnames )
         fetchActive( hostnames, compareAndUpdate );
        
     }else{
