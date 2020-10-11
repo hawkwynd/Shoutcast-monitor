@@ -1,23 +1,6 @@
-<<<<<<< HEAD
 # SC-Analytics - Shoutcast-Server-Monitor
 A Node application which monitors visitor activity, logging connections to MySQL.
 You'll need a shoutcast server running with access to the admin.cgi pages. I run sc_serv on an AWS micro instance running Ubuntu. 
-=======
-# Shoutcast Server Monitor 
-A Node.js application which monitors visitor activity, logging connections to MongoDB.
-You'll need a shoutcast server running with access to the admin.cgi pages. I run sc_serv on an AWS micro instance running Ubuntu.
-This project came out of the necessity to have some form of logging/reporting for monitoring listeners of my shoutcast radio station, Hawkwynd Radio. My first node application.
-
-## Overview/Psuedocode
-- Call to shoucast server admin returns json payload of the following:
-- Display server uptime in console log and current song playing (artist - title)
-- Geo location for city,state,country and lat/lng of IP address of visitor. 
-- Capture connecttion time of visitor, as well as referer and useragent. 
-- If listeners, display console log of total listerner count, then list the visitors data in a list.
-- Update/Insert data into listeners table of MongoDB (for v2 reporting functions and analytics)
-- Repeat every 30 seconds.
-
->>>>>>> 21a0b3f1712e3e37068bf0fda17376e3d85e2a65
 
 ## Installation
 Edit `config.sample.json` and save it as `config.json`
@@ -25,18 +8,18 @@ Edit `config.sample.json` and save it as `config.json`
 ```json
 {
     "shoutcast" : {
-        "url"  : "http://yourserver.org:8000", 
-        "pass" : "yourpassword_admin",         
-        "mode" : "viewjson",                   
-        "sid"  : 1,                            
-        "path" : "admin.cgi"                   
+        "url": "http://yourserver.org:8000",
+        "pass" : "yourpassword_admin",
+        "mode" : "viewjson",
+        "sid" : 1,
+        "path" : "admin.cgi"
     },
-    "mongodb" : {
-        "host"       : "localhost",            
-        "port"       : "27017",                
-        "db"         :  "yourdatabase",        
-        "collection" : "listeners"             
-    }
+    "mysql" : {
+        "host": "localhost",
+        "user": "MysqlUsername",
+        "password": "MysqlPassword",
+        "database": "MysqlDatabaseName"
+      } 
 }
 ```
 
@@ -46,7 +29,7 @@ Edit `config.sample.json` and save it as `config.json`
 ### Run it
 `npm run start` 
 
-# Console log report
+# Console log report display in command line
 ```
 Server Uptime: 20:03:28
 Currently playing: Steely Dan - Deacon Blues

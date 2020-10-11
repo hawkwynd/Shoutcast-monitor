@@ -4,14 +4,9 @@
   "description": "ShoutCast Server Monitor (Floyd)",
   "main": "floyd.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "env TZ='America/Chicago' nodemon floyd.js",
     "floyd": "env TZ='America/Chicago' nodemon floyd2.js",
     "karen": "env TZ='America/Chicago' nodemon karen.js"
-=======
-    "start": "nodemon index.js",
-    "report" : "nodemon service.js"
->>>>>>> 21a0b3f1712e3e37068bf0fda17376e3d85e2a65
   },
   "author": "Scott Fleming scott.s.fleming@gmail.com",
   "license": "ISC",

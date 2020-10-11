@@ -6,12 +6,6 @@
         "sid" : 1,
         "path" : "admin.cgi"
     },
-    "mongodb" : {
-        "host" : "localhost",
-        "port" : "27017",
-        "db" :  "yourdatabase",
-        "collection" : "listeners"
-    },
     "mysql" : {
         "host": "localhost",
         "user": "MysqlUsername",
