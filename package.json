@@ -1,24 +1,28 @@
 {
   "name": "ShoutCast-Monitor",
   "version": "1.0.0",
-  "description": "ShoutCast Server Monitor",
-  "main": "index.js",
+  "description": "ShoutCast Server Monitor (Floyd)",
+  "main": "floyd.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "ice": "nodemon ice.js"
+    "start": "env TZ='America/Chicago' nodemon floyd.js",
+    "floyd": "env TZ='America/Chicago' nodemon floyd2.js",
+    "karen": "env TZ='America/Chicago' nodemon karen.js"
   },
   "author": "Scott Fleming",
   "license": "ISC",
   "dependencies": {
+    "@maxmind/geoip2-node": "^1.6.0",
     "cli": "^1.0.1",
-    "geo-from-ip": "^1.2.2",
+    "geo-from-ip": "^2.0.0",
     "get-json": "^1.0.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "lodash.merge": "^4.6.2",
     "minimatch": "^3.0.4",
-    "moment": "^2.24.0",
-    "mongodb": "^3.3.3",
-    "nodemon": "^1.19.4",
-    "pretty-ms": "^5.0.0"
+    "moment": "^2.29.1",
+    "mongodb": "^3.6.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.4",
+    "pretty-ms": "^7.0.1",
+    "underscore": "^1.11.0"
   }
 }
