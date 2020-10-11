@@ -1,11 +1,12 @@
 {
   "name": "ShoutCast-Monitor",
   "version": "1.0.0",
-  "description": "ShoutCast Server Monitor",
-  "main": "index.js",
+  "description": "ShoutCast Server Monitor (Floyd)",
+  "main": "floyd.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "ice": "nodemon ice.js"
+    "start": "env TZ='America/Chicago' nodemon floyd.js",
+    "floyd": "env TZ='America/Chicago' nodemon floyd2.js",
+    "karen": "env TZ='America/Chicago' nodemon karen.js"
   },
   "author": "Scott Fleming",
   "license": "ISC",
@@ -16,9 +17,11 @@
     "lodash": "^4.17.15",
     "lodash.merge": "^4.6.2",
     "minimatch": "^3.0.4",
-    "moment": "^2.24.0",
+    "moment": "^2.26.0",
     "mongodb": "^3.3.3",
+    "mysql": "^2.18.1",
     "nodemon": "^1.19.4",
-    "pretty-ms": "^5.0.0"
+    "pretty-ms": "^5.0.0",
+    "underscore": "^1.10.2"
   }
 }
