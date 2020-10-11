@@ -53,26 +53,9 @@ Listeners: 1
 # Output Explanation    
 Datetime | IP Address | City, State Country | Connect time | Referer | Geo location (Maps lookup)
 
-## Project Dependencies
-```json
-"dependencies": {
-    "cli"         : "^1.0.1",
-    "geo-from-ip" : "^1.2.2",
-    "get-json"    : "^1.0.1",
-    "lodash"      : "^4.17.15",
-    "lodash.merge": "^4.6.2",
-    "minimatch"   : "^3.0.4",
-    "moment"      : "^2.24.0",
-    "mongodb"     : "^3.3.3",
-    "nodemon"     : "^1.19.4",
-    "pretty-ms"   : "^5.0.0"
-  }
-  ```
 
-Inspiration for this project from [codeforgeek.com](https://codeforgeek.com/node-mongodb-tutorial/).
-
-## TO-DO
-- [ ] Web console dashboard
+## TO-DO / Wants
+- [ ] Web console dashboard (in progress)
 - [ ] Reporting / Analytics functions for queries
 - [ ] Shoutcast Administration functions (kick/ban/reserve)
 - [ ] Multiple stream monitoring
