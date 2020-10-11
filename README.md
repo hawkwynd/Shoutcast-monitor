@@ -3,6 +3,10 @@ A Node application which monitors visitor activity, logging connections to MySQL
 You'll need a shoutcast server running with access to the admin.cgi pages. I run sc_serv on an AWS micro instance running Ubuntu. 
 
 ## Installation
+
+### Create Mysql Database, and create user/password credentials
+Import `mysql/stream_mysql.sql` into your database
+
 Edit `config.sample.json` and save it as `config.json`
 
 ```json
@@ -22,6 +26,7 @@ Edit `config.sample.json` and save it as `config.json`
       } 
 }
 ```
+
 
 ## Install the packages and dependencies
 `npm run install`
@@ -64,9 +69,8 @@ Inspiration for this project from [codeforgeek.com](https://codeforgeek.com/node
 - [ ] Reporting / Analytics functions for queries
 - [ ] Shoutcast Administration functions (kick/ban/reserve)
 - [ ] Multiple stream monitoring
-- [ ] Pretty stuff.
 
-Scott Fleming
+Author: Scott Fleming
 
 [hawkwynd@gmail.com](mailto:hawkwynd@gmail.com)
 
