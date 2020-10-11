@@ -1,6 +1,13 @@
-# SC-Analytics - Shoutcast-Server-Monitor
-A Node application which monitors visitor activity, logging connections to MySQL.
+# SC-Analytics - Shoutcast-Server-Monitor (FLOYD)
+A simple node application which monitors visitor activity, logging connections to MySQL.
 You'll need a shoutcast server running with access to the admin.cgi pages. I run sc_serv on an AWS micro instance running Ubuntu. 
+
+## How It Works
+Floyd pings the shoutcast server every 15 seconds, and if the song has changed, updates the Mysql recording play counter.
+Floyd then collects listener connection data, peforms geoip lookup on the connected IP address and stores/updates the record in the listeners table. 
+
+The listeners table is used by a seperate project which displays listener activity and analytics. (see other repo)
+
 
 ## Installation
 
