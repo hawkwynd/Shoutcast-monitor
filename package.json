@@ -22,6 +22,6 @@
     "mysql": "^2.18.1",
     "nodemon": "^1.19.4",
     "pretty-ms": "^5.0.0",
-    "underscore": "^1.10.2"
+    "underscore": "^1.12.1"
   }
 }
