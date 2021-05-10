@@ -14,7 +14,7 @@
     "cli": "^1.0.1",
     "geo-from-ip": "^1.2.2",
     "get-json": "^1.0.1",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "lodash.merge": "^4.6.2",
     "minimatch": "^3.0.4",
     "moment": "^2.26.0",
