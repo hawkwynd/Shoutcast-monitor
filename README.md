@@ -53,10 +53,6 @@ Listeners: 1
 ![optional](docs/img/console-show.png)
 
 
-# Output Explanation    
-Datetime | IP Address | City, State Country | Connect time | Referer | Geo location (Maps lookup)
-
-
 ## TO-DO / Wants
 - [ ] Web console dashboard (in progress)
 - [ ] Reporting / Analytics functions for queries
@@ -67,6 +63,6 @@ Author: Scott Fleming
 
 [hawkwynd@gmail.com](mailto:hawkwynd@gmail.com)
 
-Hawkwynd Radio - Live broadcasts Friday nights 9pm CST 24/7 Classic Rock & Excellent Music
+Hawkwynd Radio - Live broadcasts Friday nights 7pm CST 24/7 Classic Rock & Excellent Music
 
 [http://stream.hawkwynd.com](http://stream.hawkwynd.com)
