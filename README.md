@@ -50,7 +50,7 @@ Listeners: 1
 10/27/2019, 10:38:12 AM|108.49.69.200|Wellesley Hills, Massachusetts US|03:31:39| DNAS|42.3104,-71.2741
 ```
 
-![o](/docs/img/Screenshot from 2021-08-29 12-05-22.png)
+![optional](/docs/img/Screenshot from 2021-08-29 12-05-22.png)
 
 
 # Output Explanation    
