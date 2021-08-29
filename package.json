@@ -8,13 +8,14 @@
     "floyd": "env TZ='America/Chicago' nodemon floyd2.js",
     "karen": "env TZ='America/Chicago' nodemon karen.js"
   },
-  "author": "Scott Fleming",
+  "author": "Scott Fleming scott.s.fleming@gmail.com",
   "license": "ISC",
   "dependencies": {
     "@maxmind/geoip2-node": "^1.6.0",
     "cli": "^1.0.1",
     "geo-from-ip": "^2.0.0",
     "get-json": "^1.0.1",
+<<<<<<< HEAD
     "ip-geolocation-api-javascript-sdk": "^1.0.7",
     "lodash": "^4.17.20",
     "lodash.merge": "^4.6.2",
@@ -25,5 +26,16 @@
     "nodemon": "^2.0.4",
     "pretty-ms": "^7.0.1",
     "underscore": "^1.11.0"
+=======
+    "lodash": "^4.17.19",
+    "lodash.merge": "^4.6.2",
+    "minimatch": "^3.0.4",
+    "moment": "^2.26.0",
+    "mongodb": "^3.3.3",
+    "mysql": "^2.18.1",
+    "nodemon": "^1.19.4",
+    "pretty-ms": "^5.0.0",
+    "underscore": "^1.10.2"
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
   }
 }

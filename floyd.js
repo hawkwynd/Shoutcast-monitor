@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 const getJSON             = require('get-json');
 const prettyMilliseconds  = require('pretty-ms');
 const geoip               = require('geo-from-ip')
+=======
+
+const getJSON             = require('get-json');
+const prettyMilliseconds  = require('pretty-ms');
+const geoip               = require('geo-from-ip');
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
 const config              = require('./config.json');
 const mysql               = require('mysql');
 const moment              = require('moment');
 var _                     = require('lodash'); // used in diff of arrays
+<<<<<<< HEAD
 const db                  = config.mysql;
 const con                 = mysql.createConnection( db );
 const sc                  = config.shoutcast; 
@@ -18,6 +26,17 @@ const rightNow            = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
 
 
 con.connect();
+=======
+const sc                  = config.shoutcast; 
+const db                  = config.mysql;
+const dt                  = new Date();
+const rightNow            = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+const con                 = mysql.createConnection( db );
+
+con.connect();
+
+
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
 
 function runner(){
 
@@ -59,7 +78,10 @@ getCurrentSong( function( s ) {
                                 console.log( plays.title + ' play count updated successfully from '+plays.plays+' to ' + playcount )
                             })
                         } else { 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
                             console.log('No plays found in recording table, so we didnt update play counter.')
                         }
                     } )
@@ -88,7 +110,11 @@ function updatePlays( plays, title, aid, rid, callback ){
 }
 
     
+<<<<<<< HEAD
     function getCurrentSong( callback ){
+=======
+function getCurrentSong( callback ){
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
         
         var getSongDB = "select * from nowplaying limit 1";
 
@@ -105,8 +131,13 @@ function updatePlays( plays, title, aid, rid, callback ){
         })
     }
 
+<<<<<<< HEAD
     // get artistID from artist table by name
     function lookupArtist( artist ,callback ){
+=======
+// get artistID from artist table by name
+function lookupArtist( artist ,callback ){
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
         var aID = 0;
         var lookupQuery = "Select * from artist where name= ? LIMIT 1";             
         var data        = [artist]
@@ -128,8 +159,13 @@ function updatePlays( plays, title, aid, rid, callback ){
 
 
 
+<<<<<<< HEAD
     // increment plays matching artistID and title in recording table
     function getRecording( artistID, title, callback){
+=======
+// increment plays matching artistID and title in recording table
+function getRecording( artistID, title, callback){
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
         
         var sqlQuery = 'SELECT * FROM recording where title=? AND artist_id=? LIMIT 1'
         var data = [ title, artistID ]
@@ -139,7 +175,10 @@ function updatePlays( plays, title, aid, rid, callback ){
             // console.log('getRecording executed : ' + q.sql )
 
             if (error){   
+<<<<<<< HEAD
                 
+=======
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
                 callback(console.error( error.message ) );
               }  
 
@@ -155,6 +194,10 @@ function updatePlays( plays, title, aid, rid, callback ){
        
     }
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
     console.log('\033[2J'); // clear console    
     console.log('* * FLOYD by Scott Fleming 2020 v1.4 * *')
     console.log(`Server Uptime: ${secondsToHms(resp.streamuptime)}` );
@@ -165,6 +208,7 @@ function updatePlays( plays, title, aid, rid, callback ){
       
       console.log(`Average Listening Time: ${secondsToHms(serverStat.averagetime)}`);
       console.log( `Unique Listeners: ${resp.uniquelisteners}` );
+<<<<<<< HEAD
       console.log( `-------------------------------\n`);     
       
       var listeners = getListeners( resp );
@@ -179,6 +223,18 @@ function updatePlays( plays, title, aid, rid, callback ){
         
           listener.geo          = geoip.allData( listener.hostname );                      
 
+=======
+      console.log( `-------------------------------\n`);
+      
+      
+      var listeners = getListeners( resp );
+      
+      for(  listener of listeners ){
+          
+          hostnames.push( listener.hostname) ; // build array of hostnames
+        
+          listener.geo          = geoip.allData( listener.hostname );   
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
           listener.connecttime  = secondsToHms( listener.connecttime );           
           listener.referer      = listener.referer == '' ? 'DNAS' : 'HTML'
           listener.timestamp    = new Date(Date.now()).toISOString();
@@ -188,6 +244,7 @@ function updatePlays( plays, title, aid, rid, callback ){
           + listener.connecttime + ' | ' + listener.referer 
           );
           
+<<<<<<< HEAD
 
         //   console.log( listener )
 
@@ -195,11 +252,19 @@ function updatePlays( plays, title, aid, rid, callback ){
           insertMysql( listener );   
           // Display listener info line
 
+=======
+          // now update mysql with the listener data
+          insertMysql( listener );   
+          // Display listener info line
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
         }
         
         
         // compare and update hostnames with DB of status=1
+<<<<<<< HEAD
         // console.log( hostnames )
+=======
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
         fetchActive( hostnames, compareAndUpdate );
        
     }else{
@@ -218,9 +283,14 @@ function updatePlays( plays, title, aid, rid, callback ){
 } // runner()
 
 runner();
+<<<<<<< HEAD
 
 // loop it every X milliseconds 5000 = 5 secs
 setInterval(runner, 20000 );
+=======
+// loop it every X milliseconds 30000 = 30 seconds
+setInterval(runner, 30000 );
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
   
 
 
@@ -260,7 +330,11 @@ setInterval(runner, 20000 );
    * 
    * 
    */
+<<<<<<< HEAD
   function browseListener( hostname ){
+=======
+  function browseListener( hostname, callback ){
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
     var out = [];
 
     var myQ = "SELECT *  FROM `listeners` WHERE hostname IN('" + hostname + "')";
@@ -275,9 +349,15 @@ setInterval(runner, 20000 );
             out             = result
         }
             
+<<<<<<< HEAD
          console.log(out)
 
         //callback(out);
+=======
+        // console.log(out)
+
+        callback(out);
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
     });
   }
 
@@ -361,7 +441,11 @@ function updateCurSong( song  ){
 // get the hostnames of the tables status=1
 function fetchActive( connected, callback ){
 
+<<<<<<< HEAD
     var myQ = "SELECT hostname FROM listeners where status = 1 "
+=======
+    var myQ = "SELECT hostname FROM listeners where status = 1"
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
 
     con.query( myQ,(err, result) => {
         
@@ -404,12 +488,16 @@ function resetStatus( ){
  * @version 1.0 
  * @description insert listener data into listener table
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
 function insertMysql( listener  ){
    
       var city      = listener.geo.city !==  null ? mysql_real_escape_string( listener.geo.city ) : 'unknown';
       var state     = listener.geo.state !== null ? mysql_real_escape_string( listener.geo.state ) : 'unknown';
       var rightNow  = moment( Date.now()).format('YYYY-MM-DD HH:mm:ss' );
+<<<<<<< HEAD
       var useragent = mysql_real_escape_string( listener.useragent );
       var status    = 1;
       var connections = 1;
@@ -429,6 +517,28 @@ function insertMysql( listener  ){
          })   
   }
 
+=======
+
+      var values = [listener.hostname, rightNow, city, rightNow, listener.connecttime,listener.geo.code.country,listener.geo.location.latitude, listener.geo.location.longitude,listener.referer,state, mysql_real_escape_string( listener.useragent ), 1, rightNow, listener.connecttime, '0000-00-00 00:00:00', 1 ]
+      var newSql = "INSERT INTO listeners (hostname, timestamp, city, first_connect, connecttime, country, lat, lng, referer, state, useragent, status ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE timestamp=?, connecttime=?, disconnect=?, status=?";
+
+      q = con.query( newSql, values, (error, result)=>{
+
+             if(error){
+                 console.log( q.sql )
+                 console.error( error.message )
+             }
+            
+            //  console.log( q.sql  )
+             
+         })   
+
+
+  }
+
+ 
+
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
 
 function mysql_real_escape_string (str) {
   return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function (char) {
@@ -458,9 +568,13 @@ function mysql_real_escape_string (str) {
 }
 
 function getListeners(d){ 
+<<<<<<< HEAD
 
     return d.listeners;
     
+=======
+    return d.listeners;
+>>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
  }
 
 function getserverStats(s){
