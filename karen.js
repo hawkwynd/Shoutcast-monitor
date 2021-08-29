@@ -24,8 +24,12 @@ function getShoutcast(){
     })
 }
 
-function callbackFuncWithData(response){
-    console.log( response.songtitle )
+function callbackFuncWithData(r){
+    
+      
+    const listeners = [...new Map(r.listeners.map(item => [item["hostname"], item])).values()];
+
+    console.log( listeners )
 
 }
 

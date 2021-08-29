@@ -1,7 +1,5 @@
 const getJSON             = require('get-json');
 const prettyMilliseconds  = require('pretty-ms');
-// const WebServiceClient    = require('@maxmind/geoip2-node').WebServiceClient;
-// const geoip               = new WebServiceClient('419073', 'HiGS4sN4ZGnvIyZy');
 const geoip               = require('geo-from-ip')
 const config              = require('./config.json');
 const mysql               = require('mysql');
@@ -12,6 +10,12 @@ const con                 = mysql.createConnection( db );
 const sc                  = config.shoutcast; 
 const dt                  = new Date();
 const rightNow            = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+
+// new ip lookup
+// var IPGeolocationAPI      = require('ip-geolocation-api-javascript-sdk');
+// var ipgeolocationApi = new IPGeolocationAPI("a6ace50db3b64d0687a9403fffbfc99f", false); 
+// var GeolocationParams = require('ip-geolocation-api-javascript-sdk/GeolocationParams.js');
+
 
 con.connect();
 
@@ -55,6 +59,7 @@ getCurrentSong( function( s ) {
                                 console.log( plays.title + ' play count updated successfully from '+plays.plays+' to ' + playcount )
                             })
                         } else { 
+
                             console.log('No plays found in recording table, so we didnt update play counter.')
                         }
                     } )
@@ -134,6 +139,7 @@ function updatePlays( plays, title, aid, rid, callback ){
             // console.log('getRecording executed : ' + q.sql )
 
             if (error){   
+                
                 callback(console.error( error.message ) );
               }  
 
@@ -166,10 +172,12 @@ function updatePlays( plays, title, aid, rid, callback ){
 
       for(  listener of listeners ){
           
+        // console.log( checkExisting(listener.hostname ));
+
+
           hostnames.push( listener.hostname) ; // build array of hostnames
         
-         listener.geo          = geoip.allData( listener.hostname );             
-          
+          listener.geo          = geoip.allData( listener.hostname );                      
 
           listener.connecttime  = secondsToHms( listener.connecttime );           
           listener.referer      = listener.referer == '' ? 'DNAS' : 'HTML'
@@ -180,9 +188,13 @@ function updatePlays( plays, title, aid, rid, callback ){
           + listener.connecttime + ' | ' + listener.referer 
           );
           
+
+        //   console.log( listener )
+
           // now update mysql with the listener data
           insertMysql( listener );   
           // Display listener info line
+
         }
         
         
@@ -206,8 +218,9 @@ function updatePlays( plays, title, aid, rid, callback ){
 } // runner()
 
 runner();
-// loop it every X milliseconds 30000 = 30 seconds
-setInterval(runner, 5000 );
+
+// loop it every X milliseconds 5000 = 5 secs
+setInterval(runner, 20000 );
   
 
 
@@ -247,7 +260,7 @@ setInterval(runner, 5000 );
    * 
    * 
    */
-  function browseListener( hostname, callback ){
+  function browseListener( hostname ){
     var out = [];
 
     var myQ = "SELECT *  FROM `listeners` WHERE hostname IN('" + hostname + "')";
@@ -262,9 +275,9 @@ setInterval(runner, 5000 );
             out             = result
         }
             
-        // console.log(out)
+         console.log(out)
 
-        callback(out);
+        //callback(out);
     });
   }
 
@@ -348,7 +361,7 @@ function updateCurSong( song  ){
 // get the hostnames of the tables status=1
 function fetchActive( connected, callback ){
 
-    var myQ = "SELECT hostname FROM listeners where status = 1"
+    var myQ = "SELECT hostname FROM listeners where status = 1 "
 
     con.query( myQ,(err, result) => {
         
@@ -391,31 +404,30 @@ function resetStatus( ){
  * @version 1.0 
  * @description insert listener data into listener table
  */
+
 function insertMysql( listener  ){
    
       var city      = listener.geo.city !==  null ? mysql_real_escape_string( listener.geo.city ) : 'unknown';
       var state     = listener.geo.state !== null ? mysql_real_escape_string( listener.geo.state ) : 'unknown';
       var rightNow  = moment( Date.now()).format('YYYY-MM-DD HH:mm:ss' );
+      var useragent = mysql_real_escape_string( listener.useragent );
+      var status    = 1;
+      var connections = 1;
 
-      var values = [listener.hostname, rightNow, city, rightNow, listener.connecttime,listener.geo.code.country,listener.geo.location.latitude, listener.geo.location.longitude,listener.referer,state, mysql_real_escape_string( listener.useragent ), 1, rightNow, listener.connecttime, '0000-00-00 00:00:00', 1, city, state ]
+      var values = [listener.hostname, rightNow, city, rightNow, listener.connecttime, listener.geo.code.country, listener.geo.location.latitude, listener.geo.location.longitude,listener.referer, state, useragent, status, connections, rightNow, listener.connecttime, '0000-00-00 00:00:00', 1 ]
      
-      var newSql = "INSERT INTO listeners (hostname, timestamp, city, first_connect, connecttime, country, lat, lng, referer, state, useragent, status ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE timestamp=?, connecttime=?, disconnect=?, status=?, city=?, state=?";
+      var newSql = "INSERT INTO listeners ( hostname, timestamp, city, first_connect, connecttime, country, lat, lng, referer, state, useragent, status, connections ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE timestamp=?, connecttime=?, disconnect=?, status=?";
 
-      q = con.query( newSql, values, (error, result)=>{
+      q = con.query( newSql, values, (error, result )=>{
 
              if(error){
                  console.log( q.sql )
-                 console.error( error.message )
+                 console.error( 'line 397 ' + error.message )
+                 
              }
-            
-            //  console.log( q.sql  )
              
          })   
-
-
   }
-
- 
 
 
 function mysql_real_escape_string (str) {
@@ -446,7 +458,9 @@ function mysql_real_escape_string (str) {
 }
 
 function getListeners(d){ 
+
     return d.listeners;
+    
  }
 
 function getserverStats(s){

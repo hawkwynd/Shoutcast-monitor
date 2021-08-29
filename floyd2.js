@@ -13,8 +13,9 @@ const database            = mc.db;
 const dt                  = new Date();
 var _                     = require('lodash'); // used in diff of arrays
 const hostnames           = [];
+const ip_array            = [];
 
-// mysql connection
+
 
 const con = mysql.createConnection({
     host: "localhost",
@@ -31,9 +32,66 @@ const con = mysql.createConnection({
     for ( let l of resp.listeners ){
         
       hostnames.push( l )
+      ip_array.push( l )
+
+      // geolocationParams.setIPAddress(l.hostname);
+      // ipgeolocationApi.getGeolocation(handleResponse, geolocationParams);
+
     }
-    console.log( hostnames )
+
+    var uniques = uniqueHostnames( ip_array );
+    
+    for( let obj of uniques){
+      
+      // geolocationParams.setIPAddress(obj.hostname);
+      // ipgeolocationApi.getGeolocation( handleResponse, geolocationParams);
+
+      handleResponse( obj )
+      // browseListener( obj.hostname )
+
+    }
+    // console.log( hostnames )
+    
   });
+  
 
-console.log('Now you have some data from listeners. Compare that to the database table.')
+function handleResponse(json) {
+  console.log(json);
+}
 
+
+
+
+function uniqueHostnames( ip_array ){
+  let data = new Map();
+
+  for (let obj of ip_array) {
+    data.set(obj.hostname, obj);
+  }
+
+    let out = [...data.values()];
+
+    // console.log( out )
+    return out;
+}
+
+function browseListener( hostname ){
+  var out = [];
+
+  var myQ = "SELECT *  FROM `listeners` WHERE hostname IN('" + hostname + "')";
+
+  con.query( myQ,(err, res ) => {
+      
+      if( err ) {
+          console.error(err.message )
+      }
+      // iterate results set up the array for return
+      for( let result of res ){
+          out             = result
+      }
+          
+       console.log(out)
+
+      //callback(out);
+  });
+}
