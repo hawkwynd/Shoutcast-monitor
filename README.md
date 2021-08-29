@@ -41,14 +41,7 @@ Edit `config.sample.json` and save it as `config.json`
 ### Run it
 `npm run start` 
 
-# Console log report display in command line
-```
-Server Uptime: 20:03:28
-Currently playing: Steely Dan - Deacon Blues
-Average Listening Time: 03:31:39
-Listeners: 1
-10/27/2019, 10:38:12 AM|108.49.69.200|Wellesley Hills, Massachusetts US|03:31:39| DNAS|42.3104,-71.2741
-```
+# Console log report display in command line window
 
 ![optional](docs/img/console-show.png)
 
