@@ -56,10 +56,6 @@ getCurrentSong( function( s ) {
                                 console.log( plays.title + ' play count updated successfully from '+plays.plays+' to ' + playcount )
                             })
                         } else { 
-<<<<<<< HEAD
-
-=======
->>>>>>> 3aa6e789465165b2bb11288f4d055bb860f02921
                             console.log('No plays found in recording table, so we didnt update play counter.')
                         }
                     } )
